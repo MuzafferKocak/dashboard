@@ -30,8 +30,6 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 
-
-
 const menu = [
   { title: "Dashboard", icon: <HomeOutlinedIcon />, link: "/" },
   { title: "Team", icon: <PeopleOutlinedIcon />, link: "/team" },
@@ -123,16 +121,19 @@ export default function Sidebar() {
                 justifyContent: isCollapsed ? "center" : "initial",
                 px: 2.5,
                 backgroundColor:
-                  active === title ? colors.primary[500] : "transparent",
-                "&:hover": { backgroundColor: colors.primary[700] },
+                  active === title ? colors.primary[600] : "transparent",
+                "&:hover": { backgroundColor: colors.primary[500] },
+                color:
+                  active === title ? colors.greenAccent[500] : colors.grey[100],
               }}
             >
               <ListItemIcon
                 sx={{
-                  color: colors.grey[100],
-                  minWidth: 0,
-                  mr: isCollapsed ? 0 : 2,
-                  justifyContent: "center",
+                  color:
+                    active === title
+                      ? colors.greenAccent[500]
+                      : colors.grey[100],
+                  minWidth: 32,
                 }}
               >
                 {icon}
