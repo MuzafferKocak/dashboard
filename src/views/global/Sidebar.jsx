@@ -25,15 +25,25 @@ import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
+import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+
+
 
 const menu = [
   { title: "Dashboard", icon: <HomeOutlinedIcon />, link: "/" },
   { title: "Team", icon: <PeopleOutlinedIcon />, link: "/team" },
   { title: "Contacts", icon: <ContactsOutlinedIcon />, link: "/contacts" },
   { title: "Invoices", icon: <ReceiptOutlinedIcon />, link: "/invoices" },
+  { title: "Profile Form", icon: <PersonOutlinedIcon />, link: "/form" },
   { title: "Calendar", icon: <CalendarTodayOutlinedIcon />, link: "/calendar" },
+  { title: "FAQ", icon: <HelpOutlineOutlinedIcon />, link: "/faq" },
   { title: "Bar Chart", icon: <BarChartOutlinedIcon />, link: "/bar" },
   { title: "Pie Chart", icon: <PieChartOutlineOutlinedIcon />, link: "/pie" },
+  { title: "Line Chart", icon: <TimelineOutlinedIcon />, link: "/line" },
+  { title: "Geography", icon: <MapOutlinedIcon />, link: "/geography" },
 ];
 
 export default function Sidebar() {
