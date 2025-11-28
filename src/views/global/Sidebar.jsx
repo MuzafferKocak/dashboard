@@ -55,10 +55,10 @@ export default function Sidebar() {
     <Drawer
       variant="permanent"
       sx={{
-        width: isCollapsed ? 80 : 240,
+        width: isCollapsed ? 50 : 180,
         flexShrink: 0,
         "& .MuiDrawer-paper": {
-          width: isCollapsed ? 80 : 240,
+          width: isCollapsed ? 50 : 180,
           boxSizing: "border-box",
           background: colors.primary[400],
           color: colors.grey[100],
@@ -99,10 +99,10 @@ export default function Sidebar() {
               style={{ borderRadius: "50%", cursor: "pointer" }}
             />
           </Box>
-          <Typography variant="h4" fontWeight="bold" mt={1}>
-            Ed Roh
+          <Typography variant="h5" fontWeight="bold" mt={1}>
+            M E K
           </Typography>
-          <Typography variant="body2" color={colors.greenAccent[500]}>
+          <Typography variant="h6" color={colors.greenAccent[500]}>
             VP Fancy Admin
           </Typography>
         </Box>
@@ -110,38 +110,65 @@ export default function Sidebar() {
 
       {/* Menu Items */}
       <List>
-        {menu.map(({ title, icon, link }) => (
-          <ListItem key={title} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              component={Link}
-              href={link}
-              onClick={() => setActive(title)}
-              sx={{
-                minHeight: 48,
-                justifyContent: isCollapsed ? "center" : "initial",
-                px: 2.5,
-                backgroundColor:
-                  active === title ? colors.primary[600] : "transparent",
-                "&:hover": { backgroundColor: colors.primary[500] },
-                color:
-                  active === title ? colors.greenAccent[500] : colors.grey[100],
-              }}
-            >
-              <ListItemIcon
+        {menu.map(({ title, icon, link }) => {
+          const isActive = active === title;
+
+          const bgColor = isActive
+            ? theme.palette.mode === "dark"
+              ? colors.primary[600]
+              : colors.grey[400]
+            : "transparent";
+
+          const hoverBgColor =
+            theme.palette.mode === "dark"
+              ? colors.primary[500]
+              : colors.grey[800];
+
+          const textColor = isActive
+            ? theme.palette.mode === "dark"
+              ? colors.greenAccent[500]
+              : colors.blueAccent[500]
+            : theme.palette.mode === "dark"
+            ? colors.grey[100]
+            : colors.grey[400];
+
+          return (
+            <ListItem key={title} disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                component={Link}
+                href={link}
+                onClick={() => setActive(title)}
                 sx={{
-                  color:
-                    active === title
-                      ? colors.greenAccent[500]
-                      : colors.grey[100],
-                  minWidth: 32,
+                  minHeight: 46,
+                  justifyContent: isCollapsed ? "center" : "initial",
+                  px: 2.5,
+                  backgroundColor: bgColor,
+                  "&:hover": { backgroundColor: hoverBgColor },
+                  color: textColor,
                 }}
               >
-                {icon}
-              </ListItemIcon>
-              {!isCollapsed && <ListItemText primary={title} />}
-            </ListItemButton>
-          </ListItem>
-        ))}
+                <ListItemIcon
+                  sx={{
+                    minWidth: 30,
+                    color: textColor,
+                    justifyContent: isCollapsed ? "center" : "initial"
+                  }}
+                >
+                  {icon}
+                </ListItemIcon>
+
+                {!isCollapsed && (
+                  <ListItemText
+                    primary={title}
+                    slotProps={{
+                      sx: { color: textColor },
+                    }}
+                  />
+                )}
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
       </List>
     </Drawer>
   );
