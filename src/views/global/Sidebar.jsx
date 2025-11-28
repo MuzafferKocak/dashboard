@@ -22,26 +22,86 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
+import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
-const menu = [
-  { title: "Dashboard", icon: <HomeOutlinedIcon />, link: "/" },
-  { title: "Team", icon: <PeopleOutlinedIcon />, link: "/team" },
-  { title: "Contacts", icon: <ContactsOutlinedIcon />, link: "/contacts" },
-  { title: "Invoices", icon: <ReceiptOutlinedIcon />, link: "/invoices" },
-  { title: "Profile Form", icon: <PersonOutlinedIcon />, link: "/form" },
-  { title: "Calendar", icon: <CalendarTodayOutlinedIcon />, link: "/calendar" },
-  { title: "FAQ", icon: <HelpOutlineOutlinedIcon />, link: "/faq" },
-  { title: "Bar Chart", icon: <BarChartOutlinedIcon />, link: "/bar" },
-  { title: "Pie Chart", icon: <PieChartOutlineOutlinedIcon />, link: "/pie" },
-  { title: "Line Chart", icon: <TimelineOutlinedIcon />, link: "/line" },
-  { title: "Geography", icon: <MapOutlinedIcon />, link: "/geography" },
+const menuItems = [
+  {
+    title: "Dashboard",
+    icon: <HomeOutlinedIcon />,
+    link: "/",
+  },
+
+  // Data
+  {
+    title: "Team",
+    icon: <PeopleOutlinedIcon />,
+    link: "/team",
+    section: "Data",
+  },
+  {
+    title: "Contacts",
+    icon: <ContactsOutlinedIcon />,
+    link: "/contacts",
+    section: "Data",
+  },
+  {
+    title: "Invoices",
+    icon: <ReceiptOutlinedIcon />,
+    link: "/invoices",
+    section: "Data",
+  },
+
+  // Pages
+  {
+    title: "Profile Form",
+    icon: <PersonOutlinedIcon />,
+    link: "/form",
+    section: "Pages",
+  },
+  {
+    title: "Calendar",
+    icon: <CalendarTodayOutlinedIcon />,
+    link: "/calendar",
+    section: "Pages",
+  },
+  {
+    title: "FAQ",
+    icon: <HelpOutlineOutlinedIcon />,
+    link: "/faq",
+    section: "Pages",
+  },
+
+  // Charts
+  {
+    title: "Bar Chart",
+    icon: <BarChartOutlinedIcon />,
+    link: "/bar",
+    section: "Charts",
+  },
+  {
+    title: "Pie Chart",
+    icon: <PieChartOutlineOutlinedIcon />,
+    link: "/pie",
+    section: "Charts",
+  },
+  {
+    title: "Line Chart",
+    icon: <TimelineOutlinedIcon />,
+    link: "/line",
+    section: "Charts",
+  },
+  {
+    title: "Geography",
+    icon: <MapOutlinedIcon />,
+    link: "/geography",
+    section: "Charts",
+  },
 ];
 
 export default function Sidebar() {
@@ -50,6 +110,65 @@ export default function Sidebar() {
 
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [active, setActive] = useState("Dashboard");
+
+  const renderMenuItem = ({ title, icon, link }) => {
+    const isActive = active === title;
+
+    const bgColor = isActive
+      ? theme.palette.mode === "dark"
+        ? colors.primary[600]
+        : colors.grey[400]
+      : "transparent";
+
+    const hoverBgColor =
+      theme.palette.mode === "dark" ? colors.primary[500] : colors.grey[800];
+
+    const textColor = isActive
+      ? theme.palette.mode === "dark"
+        ? colors.greenAccent[500]
+        : colors.blueAccent[500]
+      : theme.palette.mode === "dark"
+      ? colors.grey[100]
+      : colors.grey[500];
+
+    return (
+      <ListItem key={title} disablePadding sx={{ display: "block" }}>
+        <ListItemButton
+          component={Link}
+          href={link}
+          onClick={() => setActive(title)}
+          sx={{
+            minHeight: 46,
+            justifyContent: isCollapsed ? "center" : "initial",
+            px: 2.5,
+            backgroundColor: bgColor,
+            "&:hover": { backgroundColor: hoverBgColor },
+            color: textColor,
+          }}
+        >
+          <ListItemIcon
+            sx={{
+              minWidth: 30,
+              color: textColor,
+              justifyContent: isCollapsed ? "center" : "initial",
+            }}
+          >
+            {icon}
+          </ListItemIcon>
+
+          {!isCollapsed && (
+            <ListItemText
+              primary={
+                <Typography sx={{ color: textColor }}>{title}</Typography>
+              }
+            />
+          )}
+        </ListItemButton>
+      </ListItem>
+    );
+  };
+
+  const sections = ["Data", "Pages", "Charts"];
 
   return (
     <Drawer
@@ -96,6 +215,7 @@ export default function Sidebar() {
               alt="profile-user"
               width="100"
               height="100"
+              loading="eager"
               style={{ borderRadius: "50%", cursor: "pointer" }}
             />
           </Box>
@@ -110,65 +230,22 @@ export default function Sidebar() {
 
       {/* Menu Items */}
       <List>
-        {menu.map(({ title, icon, link }) => {
-          const isActive = active === title;
-
-          const bgColor = isActive
-            ? theme.palette.mode === "dark"
-              ? colors.primary[600]
-              : colors.grey[400]
-            : "transparent";
-
-          const hoverBgColor =
-            theme.palette.mode === "dark"
-              ? colors.primary[500]
-              : colors.grey[800];
-
-          const textColor = isActive
-            ? theme.palette.mode === "dark"
-              ? colors.greenAccent[500]
-              : colors.blueAccent[500]
-            : theme.palette.mode === "dark"
-            ? colors.grey[100]
-            : colors.grey[400];
-
-          return (
-            <ListItem key={title} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                component={Link}
-                href={link}
-                onClick={() => setActive(title)}
-                sx={{
-                  minHeight: 46,
-                  justifyContent: isCollapsed ? "center" : "initial",
-                  px: 2.5,
-                  backgroundColor: bgColor,
-                  "&:hover": { backgroundColor: hoverBgColor },
-                  color: textColor,
-                }}
+        {renderMenuItem(menuItems.find((i) => i.title === "Dashboard"))}
+        {sections.map((section) => (
+          <Box key={section}>
+            {section !== "" && !isCollapsed && (
+              <Typography
+                variant="subtitle2"
+                sx={{ m: "15px 0 5px 20px", color: colors.grey[300] }}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 30,
-                    color: textColor,
-                    justifyContent: isCollapsed ? "center" : "initial"
-                  }}
-                >
-                  {icon}
-                </ListItemIcon>
-
-                {!isCollapsed && (
-                  <ListItemText
-                    primary={title}
-                    slotProps={{
-                      sx: { color: textColor },
-                    }}
-                  />
-                )}
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
+                {section}
+              </Typography>
+            )}
+            {menuItems
+              .filter((item) => item.section === section)
+              .map(renderMenuItem)}
+          </Box>
+        ))}
       </List>
     </Drawer>
   );
