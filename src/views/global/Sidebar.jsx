@@ -194,7 +194,7 @@ export default function Sidebar() {
         justifyContent={isCollapsed ? "center" : "space-between"}
       >
         {!isCollapsed && (
-          <Typography variant="h5" fontWeight="bold">
+          <Typography variant="h5" color={colors.grey[100]} fontWeight="bold">
             ADMIN PANEL
           </Typography>
         )}
