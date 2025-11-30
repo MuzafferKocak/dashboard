@@ -97,11 +97,9 @@ const Team = () => {
         height="75vh"
         sx={{
           "& .MuiDataGrid-row:hover": {
-<<<<<<< HEAD
-            backgroundColor: `${colors.blueAccent[500]} !important`, 
-=======
-            backgroundColor: `${colors.blueAccent[500]} !important`, // gri hover’ı iptal eder
->>>>>>> 24ecdd4c51277483475f18312347c665e2995a76
+            backgroundColor: `${colors.blueAccent[500]} !important`,
+
+            backgroundColor: `${colors.blueAccent[500]} !important`,
           },
           "& .MuiDataGrid-root": {
             border: "none",
