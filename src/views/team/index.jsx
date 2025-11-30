@@ -1,14 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
-const NoSSRDataGrid = dynamic(
-  () => import("@mui/x-data-grid").then((m) => m.DataGrid),
-  {
-    ssr: false,
-  }
-);
-
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "@/theme";
@@ -54,25 +45,42 @@ const Team = () => {
       field: "access",
       headerName: "Access Level",
       flex: 1,
+      align: "center",
+      headerAlign: "center",
+      headerClassName: "textCenter",
       renderCell: ({ row: { access } }) => {
         return (
           <Box
-            width="60%"
-            m=" 0 auto"
-            p="5px"
-            display="flex"
-            justifyContent="center"
-            borderRadius="4px"
-            backgroundColor={
-              access === "admin"
-                ? colors.greenAccent[600]
-                : colors.greenAccent[700]
-            }
+            sx={{
+              minWidth: 50,
+              width: "fit-content",
+              mx: "auto",
+              px: "8px",
+              py: "5px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              borderRadius: "4px",
+
+              backgroundColor:
+                access === "admin"
+                  ? colors.greenAccent[600]
+                  : colors.greenAccent[700],
+            }}
           >
             {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
             {access === "manager" && <SecurityOutlinedIcon />}
             {access === "user" && <LockOpenOutlinedIcon />}
-            <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
+            <Typography
+              color={colors.grey[100]}
+              sx={{
+                ml: "5px",
+
+                "@media (max-width: 600px)": {
+                  display: "none",
+                },
+              }}
+            >
               {access}
             </Typography>
           </Box>
@@ -88,6 +96,9 @@ const Team = () => {
         m="40px 0 0 0"
         height="75vh"
         sx={{
+          "& .MuiDataGrid-row:hover": {
+            backgroundColor: `${colors.blueAccent[500]} !important`, // gri hover’ı iptal eder
+          },
           "& .MuiDataGrid-root": {
             border: "none",
             backgroundColor: "transparent",
@@ -99,18 +110,23 @@ const Team = () => {
             color: colors.greenAccent[300],
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: `${colors.blueAccent[700]} !important`,
+            backgroundColor: `${colors.blueAccent[800]} !important`,
             borderBottom: "none",
           },
           "& .MuiDataGrid-columnHeader": {
-            backgroundColor: `${colors.blueAccent[700]} !important`,
+            backgroundColor: `${colors.blueAccent[800]} !important`,
           },
           "& .MuiDataGrid-virtualScroller": {
             backgroundColor: colors.primary[400],
           },
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
+            backgroundColor: colors.blueAccent[800],
+          },
+          "& .MuiDataGrid-cell--textCenter": {
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           },
         }}
       >
