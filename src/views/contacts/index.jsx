@@ -1,15 +1,13 @@
 "use client";
 
-import { Box, Typography, useTheme } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { Box, useTheme} from "@mui/material";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "@/theme";
-import { mockDataTeam } from "@/data/mockData";
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
+import { mockDataContacts } from "@/data/mockData";
 import Header from "@/components/Header";
 
-const Team = () => {
+
+const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -17,7 +15,10 @@ const Team = () => {
     {
       field: "id",
       headerName: "ID",
+      flex: 0.5,
+
     },
+    {field: "registrarId", headerName: "Registrar ID"},
     {
       field: "name",
       headerName: "Name",
@@ -42,56 +43,26 @@ const Team = () => {
       flex: 1,
     },
     {
-      field: "access",
-      headerName: "Access Level",
+      field: "address",
+      headerName: "Address",
       flex: 1,
-      align: "center",
-      headerAlign: "center",
-      headerClassName: "textCenter",
-      renderCell: ({ row: { access } }) => {
-        return (
-          <Box
-            sx={{
-              minWidth: 50,
-              width: "fit-content",
-              mx: "auto",
-              px: "8px",
-              py: "5px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: "4px",
-
-              backgroundColor:
-                access === "admin"
-                  ? colors.greenAccent[600]
-                  : colors.greenAccent[700],
-            }}
-          >
-            {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-            {access === "manager" && <SecurityOutlinedIcon />}
-            {access === "user" && <LockOpenOutlinedIcon />}
-            <Typography
-              color={colors.grey[100]}
-              sx={{
-                ml: "5px",
-
-                "@media (max-width: 600px)": {
-                  display: "none",
-                },
-              }}
-            >
-              {access}
-            </Typography>
-          </Box>
-        );
-      },
     },
+    {
+      field: "city",
+      headerName: "City",
+      flex: 1,
+    },
+    {
+      field: "zipCode",
+      headerName: "ZipCode",
+      flex: 1,
+    },
+    
   ];
 
   return (
     <Box m="20px">
-      <Header title="TEAM" subtitle="Managing the Team Members" />
+      <Header title="CONTACTS" subtitle="List of Contacts for Future Reference" />
       <Box
         m="40px 0 0 0"
         height="75vh"
@@ -130,10 +101,11 @@ const Team = () => {
           },
         }}
       >
-        <DataGrid rows={mockDataTeam} columns={columns} />
+        <DataGrid rows={mockDataContacts} columns={columns} />
       </Box>
     </Box>
   );
 };
 
-export default Team;
+export default Contacts;
+
