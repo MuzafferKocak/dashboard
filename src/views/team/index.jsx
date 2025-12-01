@@ -8,6 +8,7 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "@/components/Header";
+import CustomToolbar from "@/components/CustomToolbar";
 
 const Team = () => {
   const theme = useTheme();
@@ -17,6 +18,7 @@ const Team = () => {
     {
       field: "id",
       headerName: "ID",
+      flex: 0.5,
     },
     {
       field: "name",
@@ -30,6 +32,7 @@ const Team = () => {
       type: "number",
       headerAlign: "left",
       align: "left",
+      flex: 0.5,
     },
     {
       field: "phone",
@@ -132,7 +135,12 @@ const Team = () => {
           },
         }}
       >
-        <DataGrid rows={mockDataTeam} columns={columns} />
+        <DataGrid
+          rows={mockDataTeam}
+          columns={columns}
+          slots={{ toolbar: CustomToolbar }}
+          showToolbar
+        />
       </Box>
     </Box>
   );
