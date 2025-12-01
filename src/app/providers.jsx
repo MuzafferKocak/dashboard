@@ -7,7 +7,7 @@ import { ColorModeContext, useMode } from "@/theme";
 import Topbar from "@/views/global/Topbar";
 import Sidebar from "@/views/global/Sidebar";
 
-export default function Providers({ children }) {
+const Providers = ({ children }) => {
   const [theme, colorMode] = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
 
@@ -25,4 +25,5 @@ export default function Providers({ children }) {
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
-}
+};
+export default Providers;

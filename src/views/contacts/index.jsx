@@ -1,11 +1,11 @@
 "use client";
 
-import { Box, useTheme} from "@mui/material";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { Box, useTheme } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "@/theme";
 import { mockDataContacts } from "@/data/mockData";
 import Header from "@/components/Header";
-
+import CustomToolbar from "@/components/CustomToolbar";
 
 const Contacts = () => {
   const theme = useTheme();
@@ -16,9 +16,8 @@ const Contacts = () => {
       field: "id",
       headerName: "ID",
       flex: 0.5,
-
     },
-    {field: "registrarId", headerName: "Registrar ID"},
+    { field: "registrarId", headerName: "Registrar ID" },
     {
       field: "name",
       headerName: "Name",
@@ -29,6 +28,7 @@ const Contacts = () => {
       field: "age",
       headerName: "Age",
       type: "number",
+      flex: 0.5,
       headerAlign: "left",
       align: "left",
     },
@@ -57,18 +57,20 @@ const Contacts = () => {
       headerName: "ZipCode",
       flex: 1,
     },
-    
   ];
 
   return (
     <Box m="20px">
-      <Header title="CONTACTS" subtitle="List of Contacts for Future Reference" />
+      <Header
+        title="CONTACTS"
+        subtitle="List of Contacts for Future Reference"
+      />
       <Box
         m="40px 0 0 0"
         height="75vh"
         sx={{
           "& .MuiDataGrid-row:hover": {
-            backgroundColor: `${colors.blueAccent[500]} !important`, 
+            backgroundColor: `${colors.blueAccent[500]} !important`,
           },
           "& .MuiDataGrid-root": {
             border: "none",
@@ -101,11 +103,15 @@ const Contacts = () => {
           },
         }}
       >
-        <DataGrid rows={mockDataContacts} columns={columns} />
+        <DataGrid
+          rows={mockDataContacts}
+          columns={columns}
+          slots={{ toolbar: CustomToolbar }}
+          showToolbar
+        />
       </Box>
     </Box>
   );
 };
 
 export default Contacts;
-
