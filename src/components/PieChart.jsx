@@ -1,3 +1,5 @@
+"use client"
+
 import { ResponsivePie } from "@nivo/pie";
 import { useTheme } from "@mui/material";
 import { tokens } from "@/theme";

@@ -1,3 +1,5 @@
+"use client"
+
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { geoFeatures } from "@/data/mockGeoFeatures";
 import { mockGeographyData as data } from "@/data/mockData";

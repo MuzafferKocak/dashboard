@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+
 import { Box, Typography, useTheme } from "@mui/material";
 import Header from "@/components/Header";
 import Accordion from "@mui/material/Accordion";

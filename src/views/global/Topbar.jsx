@@ -1,3 +1,5 @@
+"use client"
+
 import { Box, IconButton, InputBase, useTheme } from "@mui/material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "@/theme";
