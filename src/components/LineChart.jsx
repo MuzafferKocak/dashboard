@@ -55,19 +55,15 @@ const LineChart = ({ isDashboard = false }) => {
       enableGridX={false}
       enableGridY={false}
       axisBottom={
-        isDashboard
-          ? null
-          : {
-              tickRotation: -45,
+         {
+              tickRotation: -40,
               legend: "transportation",
               legendOffset: 36,
               legendPosition: "middle",
             }
       }
       axisLeft={
-        isDashboard
-          ? null
-          : {
+         {
               legend: "count",
               legendOffset: -40,
               tickValues: 5,
