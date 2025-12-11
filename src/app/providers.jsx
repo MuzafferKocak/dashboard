@@ -6,6 +6,7 @@ import { ColorModeContext, useMode } from "@/theme";
 
 import Topbar from "@/views/global/Topbar";
 import Sidebar from "@/views/global/Sidebar";
+import Footer from "@/components/Footer";
 
 const Providers = ({ children }) => {
   const [theme, colorMode] = useMode();
@@ -20,6 +21,7 @@ const Providers = ({ children }) => {
           <main className="content">
             <Topbar setIsSidebar={setIsSidebar} />
             {children}
+            <Footer isSidebar={isSidebar} />
           </main>
         </div>
       </ThemeProvider>
