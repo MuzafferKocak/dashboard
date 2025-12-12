@@ -12,6 +12,7 @@ import Transactions from "@/components/cards/Transactions";
 import CampaignCard from "@/components/cards/CampaignCard";
 import PieChartCard from "@/components/cards/PieChartCard";
 import GeographyCard from "@/components/cards/GeographyCard";
+import { generateDashboardPDF } from "@/utils/generateDashboardPDF";
 
 
 const Dashboard = () => {
@@ -19,12 +20,13 @@ const Dashboard = () => {
   const colors = tokens(theme.palette.mode);
 
   return (
-    <Box m="20px">
+    <Box id="dashboard-root" m="20px">
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="DASHBOARD" subtitle="Welcome to your Dashboard" />
 
         <Box>
           <Button
+          onClick={generateDashboardPDF}
             sx={{
               backgroundColor: colors.blueAccent[700],
               color: colors.grey[100],
