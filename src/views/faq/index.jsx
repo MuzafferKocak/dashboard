@@ -41,7 +41,7 @@ const Faq = () => {
   ];
 
   return (
-    <Box mx="20px">
+    <Box mx="20px" p="20px 0">
       <Header title="FAQ" subtitle="Frequently Asked Questions Page" />
 
       {faqData.map((item, index) => (
