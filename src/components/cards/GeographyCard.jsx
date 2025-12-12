@@ -2,7 +2,7 @@
 
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "@/theme";
-import GeographyChart from "@/components/GeographyChart";
+import GeographyChart from "@/components/charts/GeographyChart";
 
 const GeographyCard = () => {
   const theme = useTheme();

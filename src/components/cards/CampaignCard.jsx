@@ -2,7 +2,7 @@
 
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "@/theme";
-import ProgressCircle from "@/components/ProgressCircle";
+import ProgressCircle from "@/components/charts/ProgressCircle";
 
 const CampaignCard = () => {
   const theme = useTheme();

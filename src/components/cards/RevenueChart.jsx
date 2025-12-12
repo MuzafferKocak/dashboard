@@ -3,7 +3,7 @@
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { tokens } from "@/theme";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import LineChart from "@/components/LineChart";
+import LineChart from "@/components/charts/LineChart";
 
 const RevenueChart = () => {
   const theme = useTheme();

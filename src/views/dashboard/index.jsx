@@ -7,12 +7,12 @@ import { tokens } from "@/theme";
 import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
 
 import StatGrid from "@/components/StatGrid";
-import RevenueChart from "@/components/RevenueChart";
-import Transactions from "@/components/Transactions";
-import CampaignCard from "@/components/CampaignCard";
-import PieChartCard from "@/components/PieChartCard";
-import GeographyCard from "@/components/GeographyCard";
-import Footer from "@/components/Footer";
+import RevenueChart from "@/components/cards/RevenueChart";
+import Transactions from "@/components/cards/Transactions";
+import CampaignCard from "@/components/cards/CampaignCard";
+import PieChartCard from "@/components/cards/PieChartCard";
+import GeographyCard from "@/components/cards/GeographyCard";
+
 
 const Dashboard = () => {
   const theme = useTheme();
@@ -118,7 +118,6 @@ const Dashboard = () => {
         >
           <GeographyCard />
         </Box>
-        
       </Box>
     </Box>
   );

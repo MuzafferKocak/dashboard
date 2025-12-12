@@ -21,7 +21,6 @@ const Footer = () => {
       display="flex"
       alignItems="center"
     >
-      
       <Box
         flex={1}
         display="flex"
@@ -42,19 +41,25 @@ const Footer = () => {
           }}
         />
 
-        <Typography variant="h5" color={colors.greenAccent[400]} fontWeight="bold">
+        <Typography
+          variant="h5"
+          color={colors.greenAccent[400]}
+          fontWeight="bold"
+          sx={{ cursor: "pointer" }}
+          onClick={() =>
+            window.open("https://muzaffer-kocak.vercel.app/", "_blank")
+          }
+        >
           MeK
         </Typography>
       </Box>
 
-      
       <Box flex={1} textAlign="center">
         <Typography variant="h6" color={colors.grey[300]}>
           © {new Date().getFullYear()} All rights reserved.
         </Typography>
       </Box>
 
-      
       <Box
         flex={1}
         textAlign="right"

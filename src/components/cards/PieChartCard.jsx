@@ -2,7 +2,7 @@
 
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "@/theme";
-import PieChart from "@/components/PieChart";
+import PieChart from "@/components/charts/PieChart";
 
 const PieChartCard = () => {
   const theme = useTheme();
