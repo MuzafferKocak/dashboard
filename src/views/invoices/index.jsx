@@ -6,10 +6,17 @@ import { tokens } from "@/theme";
 import { mockDataInvoices } from "@/data/mockData";
 import Header from "@/components/Header";
 import CustomToolbar from "@/components/CustomToolbar";
+import { useContext } from "react";
+import { SearchContext } from "@/context/SearchContext";
 
 const Invoices = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const { searchTerm } = useContext(SearchContext);
+
+  const filteredInvoices = mockDataInvoices.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const columns = [
     {
@@ -102,7 +109,7 @@ const Invoices = () => {
       >
         <DataGrid
           checkboxSelection
-          rows={mockDataInvoices}
+          rows={filteredInvoices}
           columns={columns}
           slots={{ toolbar: CustomToolbar }}
           showToolbar

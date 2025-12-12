@@ -6,10 +6,17 @@ import { tokens } from "@/theme";
 import { mockDataContacts } from "@/data/mockData";
 import Header from "@/components/Header";
 import CustomToolbar from "@/components/CustomToolbar";
+import { useContext } from "react";
+import { SearchContext } from "@/context/SearchContext";
 
 const Contacts = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const { searchTerm } = useContext(SearchContext);
+
+  const filteredContacts = mockDataContacts.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const columns = [
     {
@@ -104,7 +111,7 @@ const Contacts = () => {
         }}
       >
         <DataGrid
-          rows={mockDataContacts}
+          rows={filteredContacts}
           columns={columns}
           slots={{ toolbar: CustomToolbar }}
           showToolbar

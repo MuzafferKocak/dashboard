@@ -9,10 +9,18 @@ import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "@/components/Header";
 import CustomToolbar from "@/components/CustomToolbar";
+import { useContext } from "react";
+import { SearchContext } from "@/context/SearchContext";
 
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+
+  const { searchTerm } = useContext(SearchContext);
+
+  const filteredTeam = mockDataTeam.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const columns = [
     {
@@ -136,7 +144,7 @@ const Team = () => {
         }}
       >
         <DataGrid
-          rows={mockDataTeam}
+          rows={filteredTeam}
           columns={columns}
           slots={{ toolbar: CustomToolbar }}
           showToolbar
