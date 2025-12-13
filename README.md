@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Admin Dashboard
 
-## Getting Started
+A modern and responsive admin dashboard built with Next.js and Material UI, focused on clean UI, modular components, and data visualization.
 
-First, run the development server:
+Tech Stack & Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Next.js (App Router) – modern React framework
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+React 19
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Material UI (MUI) – layout, theming, responsive design
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+MUI DataGrid – tables for contacts, team, invoices
 
-## Learn More
+Nivo Charts – bar, line, pie, and geography charts
 
-To learn more about Next.js, take a look at the following resources:
+FullCalendar – calendar view
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Formik + Yup – form handling and validation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Context API – theme mode and global search
 
-## Deploy on Vercel
+Mock data – no backend, fully open and accessible
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Highlights
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Responsive grid-based dashboard layout
+
+Dark / Light mode toggle
+
+Sidebar with collapsible navigation
+
+Reusable card & chart components
+
+Search functionality across data tables
+
+Footer and topbar with modern UI patterns
+
+Notes
+
+This project is frontend-focused and uses mock data.
+No authentication or backend is included by design, to keep the dashboard fully visible for demo and portfolio purposes.
